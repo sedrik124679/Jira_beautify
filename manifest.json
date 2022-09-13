@@ -1,0 +1,31 @@
+{
+  "name": "Jira beautify",
+  "description": "Google extension",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "utils.js",
+        "contentScript.js"
+      ],
+      "exclude_matches": [
+        "https://*.atlassian.net/jira/*",
+        "https://*.atlassian.net/browse/*"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html"
+}
